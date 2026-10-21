@@ -12,7 +12,7 @@ Manual, exploratory and test-case-based testing of web and mobile applications t
 
 | # | Product type | Testing type | Platform | Highlights |
 |---|---|---|---|---|
-| 1 | Swiss private bank – e-banking web app + mobile signing app | Test cases + exploratory | Test IO | 6 test cases, 1 approved bug, 5 user stories, reproductions |
+| 1 | Swiss private bank – e-banking web app + mobile signing app | Test cases + exploratory | Test IO | 6 test cases, 1 bug reported, 5 user stories, reproductions |
 | 2 | Hotel booking website | Exploratory | uTest | **High-severity** bug approved (currency edge case blocks booking) |
 | 3 | E-commerce shop (staging) – concurrent-usage stress test | Exploratory under load | Test IO | Checkout failure analysed with DevTools (HTTP 400) |
 | 4 | Cinema chain – Android app | Bug fix verification | uTest | Fix of a Critical bug verified and approved |
@@ -32,7 +32,7 @@ Manual, exploratory and test-case-based testing of web and mobile applications t
 
 **What I did**
 - **Scripted test cases:** executed 6 test cases covering new and known beneficiaries, partial/complete/no address, and QR-bill payments. Each step marked Passed / Failed, with evidence.
-- **Bug found:** a payment option expected in the execution step was not displayed. Verified with two different IBAN countries before reporting. **Approved by the Test Lead.**
+- **Bug reported:** a payment option required by the test case was not displayed in the execution step. Verified with two different IBAN countries before reporting.
 - **Reproductions:** confirmed existing bugs (e.g. incorrect payment status after validation) and reported results on a different OS / IBAN country than the original report.
 - **Exploratory user stories:** 5 stories on login and payment flows (security banner, loss of connectivity, non-blocking payment screen, validation rules for new vs. known beneficiaries, manual rejection).
 - Simulated loss of connectivity with **DevTools → Network → Offline**, so no personal network data appeared in recordings.
@@ -42,6 +42,7 @@ Manual, exploratory and test-case-based testing of web and mobile applications t
 - Business rules explain many "bugs" (default execution date on next business day, *Cancelled* vs. *Rejected* status, known beneficiaries skip validation).
 - Test data matters: I caught an invalid checksum in a sample IBAN provided in the test material.
 - Plan the order of test cases: some cases create the data (beneficiaries) that others need.
+- Check the test account's permissions first: test users can have limited access to some functions, so a "missing" feature may be an account limitation rather than a defect. When the test material doesn't document this, ask before reporting.
 
 ---
 
